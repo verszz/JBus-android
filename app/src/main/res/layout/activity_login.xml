@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#454242"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginActivity">
@@ -18,7 +18,7 @@
         android:gravity="center_horizontal"
         android:lineSpacingExtra="8sp"
         android:text="JBUS"
-        android:textColor="#000000"
+        android:textColor="#A58832"
         android:textSize="34sp"
         android:typeface="sans"
         tools:text="JBus" />
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Mudahkan Perjalananmu"
-        android:textColor="#2196F3"
+        android:textColor="#FBFBFB"
         android:textSize="24sp" />
 
     <LinearLayout
@@ -40,38 +40,41 @@
 
         <EditText
             android:id="@+id/email"
-            android:layout_width="393dp"
+            android:layout_width="363dp"
             android:layout_height="59dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
+            android:backgroundTint="#BDBCBC"
             android:ems="10"
             android:hint="Masukkan Email-mu"
             android:inputType="textEmailAddress"
-            android:textColor="#636D71"
-            android:textColorHint="#5D6468" />
+            android:textColor="#C0CACD"
+            android:textColorHint="#718793" />
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="396dp"
+            android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="20dp"
+            android:backgroundTint="#BDBCBC"
             android:ems="10"
             android:hint="Masukkan Password-mu"
             android:inputType="textPassword"
-            android:textColor="#636D71"
-            android:textColorHint="#5E666C" />
+            android:textColor="#C0CACD"
+            android:textColorHint="#718793" />
 
         <Button
             android:id="@+id/login_button"
             android:layout_width="324dp"
             android:layout_height="64dp"
             android:layout_gravity="center"
-            android:backgroundTint="#2196F3"
+            android:backgroundTint="#A58832"
             android:text="LOGIN"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:cornerRadius="90dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -80,16 +83,18 @@
             android:layout_marginBottom="0dp"
             android:text="Belum Punya Akun?"
             android:textAlignment="center"
-            android:textColor="#000000" />
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/register_now"
             android:layout_width="match_parent"
             android:layout_height="39dp"
             android:layout_marginTop="0dp"
+            android:autoLink="all"
+            android:linksClickable="true"
             android:text="Yuk Daftar"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#FFC107"
             android:textStyle="bold"
             tools:text="Yuk Daftar" />
 

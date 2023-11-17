@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#454242"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:text="Daftarkan Dirimu"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <TextView
+        android:id="@+id/Sub_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="5dp"
+        android:backgroundTint="#000000"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:text="Masukkan username, email, dan password"
+        android:textColor="#BFB3B3"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="153dp" />
+
+    <EditText
+        android:id="@+id/Username"
+        android:layout_width="367dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#BDBCBC"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="text"
+        android:paddingTop="10dp"
+        android:textColorHint="#718793"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="367dp"
+        android:layout_height="42dp"
+        android:backgroundTint="#BDBCBC"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#718793"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="367dp"
+        android:layout_height="47dp"
+        android:backgroundTint="#BDBCBC"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="#718793"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+    <Button
+        android:id="@+id/Sign_In_Button"
+        android:layout_width="210dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#A58832"
+        android:text="Daftar"
+        app:cornerRadius="90dp"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+</LinearLayout>
