@@ -14,8 +14,10 @@
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:fontFamily="monospace"
-        android:gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
         android:lineSpacingExtra="8sp"
         android:text="JBUS"
         android:textColor="#A58832"
@@ -29,75 +31,67 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Mudahkan Perjalananmu"
-        android:textColor="#FBFBFB"
+        android:textColor="#CFCBCB"
         android:textSize="24sp" />
 
-    <LinearLayout
-        android:id="@+id/login_form"
-        android:layout_width="609dp"
-        android:layout_height="380dp"
-        android:orientation="vertical">
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="290dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:backgroundTint="#BDBCBC"
+        android:ems="10"
+        android:hint="Masukkan Email-mu"
+        android:inputType="textEmailAddress"
+        android:textColor="#C0CACD"
+        android:textColorHint="#718793" />
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="363dp"
-            android:layout_height="59dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="0dp"
-            android:backgroundTint="#BDBCBC"
-            android:ems="10"
-            android:hint="Masukkan Email-mu"
-            android:inputType="textEmailAddress"
-            android:textColor="#C0CACD"
-            android:textColorHint="#718793" />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#BDBCBC"
+        android:ems="10"
+        android:hint="Masukkan Password-mu"
+        android:inputType="textPassword"
+        android:textColor="#C0CACD"
+        android:textColorHint="#718793" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="364dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#BDBCBC"
-            android:ems="10"
-            android:hint="Masukkan Password-mu"
-            android:inputType="textPassword"
-            android:textColor="#C0CACD"
-            android:textColorHint="#718793" />
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="280dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#A58832"
+        android:text="LOGIN"
+        android:textSize="16sp"
+        app:cornerRadius="90dp" />
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="324dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#A58832"
-            android:text="LOGIN"
-            android:textSize="16sp"
-            app:cornerRadius="90dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:text="Belum Punya Akun?"
+        android:textAlignment="center"
+        android:textColor="#CFCBCB" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp"
-            android:text="Belum Punya Akun?"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/register_now"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:layout_marginTop="0dp"
-            android:autoLink="all"
-            android:linksClickable="true"
-            android:text="Yuk Daftar"
-            android:textAlignment="center"
-            android:textColor="#FFC107"
-            android:textStyle="bold"
-            tools:text="Yuk Daftar" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/register_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:text="Yuk Daftar"
+        android:textAlignment="center"
+        android:textColor="#A58832"
+        android:textStyle="bold"
+        tools:text="Yuk Daftar" />
 
 </LinearLayout>

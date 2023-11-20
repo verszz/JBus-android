@@ -50,6 +50,7 @@
         android:hint="Username"
         android:inputType="text"
         android:paddingTop="10dp"
+        android:textColor="#CFCBCB"
         android:textColorHint="#718793"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="212dp" />
@@ -62,6 +63,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColor="#CFCBCB"
         android:textColorHint="#718793"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="252dp" />
@@ -74,6 +76,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="#CFCBCB"
         android:textColorHint="#718793"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="294dp" />
