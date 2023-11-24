@@ -106,7 +106,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/topUp"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:inputType="number" />
