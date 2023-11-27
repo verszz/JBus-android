@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AboutMeActivity" >
+    tools:context=".AboutMeActivity">
 
     <TextView
         android:id="@+id/initial"
@@ -45,9 +45,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:text="-"
                 android:textColor="@color/black"
-                android:textSize="24dp"
-                android:text="-" />
+                android:textSize="24dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,9 +94,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:text="-"
                 android:textColor="@color/black"
-                android:textSize="24dp"
-                android:text="-" />
+                android:textSize="24dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -120,5 +120,59 @@
                 android:text="TOP UP"
                 app:cornerRadius="90dp" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/company"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="9dp">
+
+        <TextView
+            android:id="@+id/statusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/registerRenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:text="Daftarkan Perusahaanmu"
+            android:textAlignment="center"
+            android:textColor="#A58832"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/registerCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/manageBusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#A58832"
+            android:gravity="center|center_horizontal"
+            android:text="Manage Bus" />
+
+
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>

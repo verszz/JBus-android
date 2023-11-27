@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,9 +25,9 @@ public class AboutMeActivity extends AppCompatActivity {
     public static Account LoggedAccount;
     private BaseApiService mApiService;
     private Context mContext;
-    private Button topUpButton = null;
+    private Button topUpButton, manageBusButton = null;
     private EditText topUp;
-    private TextView usernameTextView, emailTextView, initialTextView, balanceTextView;
+    private TextView usernameTextView, emailTextView, initialTextView, balanceTextView, statusTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +41,47 @@ public class AboutMeActivity extends AppCompatActivity {
         balanceTextView = findViewById(R.id.balance);
 
         topUp = findViewById(R.id.topUp);
+
         topUpButton = findViewById(R.id.button);
+        manageBusButton = findViewById(R.id.manageBusButton);
+
+
 
         if (LoginActivity.LoggedAccount != null) {
             usernameTextView.setText(LoginActivity.LoggedAccount.name);
             emailTextView.setText(LoginActivity.LoggedAccount.email);
             balanceTextView.setText(Double.toString(LoginActivity.LoggedAccount.balance));
             initialTextView.setText(getInitials(LoginActivity.LoggedAccount.name));
+
+            if (LoginActivity.LoggedAccount.company != null) {
+                // Already a renter
+                TextView textView = findViewById(R.id.statusTextView);
+                textView.setText("Anda sudah terdaftar sebagai Penyewa");
+
+                TextView registerRenter = findViewById(R.id.registerRenter);
+                registerRenter.setVisibility(View.GONE);
+
+                Button manageBusButton = findViewById(R.id.manageBusButton);
+                manageBusButton.setOnClickListener(v -> {
+                    moveActivity(mContext, ManageBusActivity.class);
+                });
+            } else {
+                // Not a renter
+                TextView textView = findViewById(R.id.statusTextView);
+                textView.setText("Anda belum terdaftar sebagai Penyewa");
+
+                Button manageBusButton = findViewById(R.id.manageBusButton);
+                manageBusButton.setVisibility(View.GONE);
+
+                TextView registerCompany = findViewById(R.id.registerRenter);
+                registerCompany.setOnClickListener(v -> {
+                    moveActivity(mContext, RegisterRenterActivity.class);
+                });
+            }
+
+
         }
-        topUpButton.setOnClickListener(v -> {
+            topUpButton.setOnClickListener(v -> {
             handleTopUp();
         });
 
@@ -109,5 +142,4 @@ protected void handleTopUp() {
         Toast.makeText(mContext, "Please enter the amount", Toast.LENGTH_SHORT).show();
     }
 }
-
-    }
+}

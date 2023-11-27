@@ -32,14 +32,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mContext = this;
         mApiService = UtilsApi.getApiService();
+
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+
         registerNow = findViewById(R.id.register_now);
         loginButton = findViewById(R.id.login_button);
+
         registerNow.setOnClickListener(v -> {moveActivity(this, RegisterActivity.class);});
         loginButton.setOnClickListener(v -> {
             handleLogin();
-
 
             });
         getSupportActionBar().hide();
@@ -68,11 +70,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 BaseResponse<Account> res = response.body();
 
-                if (res.success)
+                if (res.success){
                     finish();
                 LoggedAccount = res.payload;
                 Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
-                moveActivity(mContext, MainActivity.class);
+                moveActivity(mContext, MainActivity.class);}
+                else{
+                    Toast.makeText(mContext, "Email tidak terdaftar", Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onFailure(Call<BaseResponse<Account>> call, Throwable t) {
