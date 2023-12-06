@@ -19,6 +19,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Register renter activity.
+ */
 public class RegisterRenterActivity extends AppCompatActivity {
     private BaseApiService mApiService;
     private Context mContext;
@@ -45,6 +48,9 @@ public class RegisterRenterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Handle register renter.
+     */
     protected void handleRegisterRenter() {
 // handling empty field
         String companyNameS = companyName.getText().toString();

@@ -19,6 +19,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Register activity.
+ */
 public class RegisterActivity extends AppCompatActivity {
 //    private EditText usernameEditText, emailEditText;
     private Button registerButton = null;
@@ -70,6 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
         return initials.toString();
     }
 
+    /**
+     * Handle register.
+     */
     protected void handleRegister() {
 // handling empty field
         String nameS = name.getText().toString();

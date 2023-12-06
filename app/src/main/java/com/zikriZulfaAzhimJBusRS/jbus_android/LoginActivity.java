@@ -19,12 +19,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Login activity.
+ */
 public class LoginActivity extends AppCompatActivity {
     private TextView registerNow = null;
     private Button loginButton = null;
     private EditText email, password;
     private BaseApiService mApiService;
     private Context mContext;
+    /**
+     * The constant LoggedAccount.
+     */
     public static Account LoggedAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(ctx, cls);
         startActivity(intent);
     }
+
+    /**
+     * Handle login.
+     */
     protected void handleLogin() {
 // handling empty field
         String emailS = email.getText().toString();

@@ -14,8 +14,17 @@ import com.zikriZulfaAzhimJBusRS.jbus_android.model.Bus;
 
 import java.util.List;
 
+/**
+ * The type Bus array adapter.
+ */
 public class BusArrayAdapter extends ArrayAdapter<Bus> {
 
+    /**
+     * Instantiates a new Bus array adapter.
+     *
+     * @param context the context
+     * @param busList the bus list
+     */
     public BusArrayAdapter(@NonNull Context context, List<Bus> busList) {
         super(context, 0, busList);
     }

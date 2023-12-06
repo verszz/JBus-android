@@ -3,6 +3,7 @@ package com.zikriZulfaAzhimJBusRS.jbus_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +30,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-    public class AddBusActivity extends AppCompatActivity {
+/**
+ * The type Add bus activity.
+ */
+public class AddBusActivity extends AppCompatActivity {
         private EditText busName, capacity, price;
         private BusType selectedBusType;
         private Spinner busTypeSpinner;
@@ -201,9 +205,17 @@ import retrofit2.Response;
             arrivalSpinner = findViewById(R.id.arrival_dropdown);
         }
 
-        protected void handleAdd() {
+    /**
+     * Handle add.
+     */
+    protected void handleAdd() {
             checkFacilities();
 // handling empty field
+            if(selectedDeptStationID == selectedArrStationID){
+                Toast.makeText(mContext, "Terminal tidak boleh sama",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
             String busNameS = busName.getText().toString();
             String capacityS = capacity.getText().toString();
             String priceS = price.getText().toString();
@@ -224,26 +236,29 @@ import retrofit2.Response;
                 public void onResponse(Call<BaseResponse<Bus>> call, Response<BaseResponse<Bus>> response) {
 // handle the potential 4xx & 5xx error
                     if (!response.isSuccessful()) {
-                        Toast.makeText(mContext, "Application error " +
+                        Toast.makeText(mContext, "Tolong lengkapi tiap input " +
                                 response.code(), Toast.LENGTH_SHORT).show();
                         return;
                     }
                     BaseResponse<Bus> res = response.body();
 // if success finish this activity (back to login activity)
                     if (res.success) {
-                        finish();
-                        Toast.makeText(AddBusActivity.this, "Add bus berhasil", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBusActivity.this, "Bus berhasil ditambahkan", Toast.LENGTH_SHORT).show();
+                        moveActivity(mContext, ManageBusActivity.class);
                     } else {
                         Toast.makeText(mContext, res.message, Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
                 public void onFailure(Call<BaseResponse<Bus>> call, Throwable t) {
-                    Toast.makeText(mContext, "Problem with the server",
+                    Toast.makeText(mContext, "Terdapat masalah pada server",
                             Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
-
+        private void moveActivity(Context ctx, Class<?> cls){
+            Intent intent = new Intent(ctx, cls);
+            startActivity(intent);
+        }
     }

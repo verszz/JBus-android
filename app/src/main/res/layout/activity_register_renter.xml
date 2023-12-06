@@ -74,7 +74,7 @@
         android:layout_height="42dp"
         android:backgroundTint="#BDBCBC"
         android:ems="10"
-        android:hint="Alamat"
+        android:hint="Nomor Telepon"
         android:inputType="textEmailAddress"
         android:textColor="#CFCBCB"
         android:textColorHint="#718793"

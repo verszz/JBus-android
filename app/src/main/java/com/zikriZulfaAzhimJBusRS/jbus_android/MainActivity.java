@@ -19,8 +19,17 @@ import com.zikriZulfaAzhimJBusRS.jbus_android.model.Bus;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * The Obj.
+     */
     BusArrayAdapter obj = null;
+    /**
+     * The List.
+     */
     ListView list;
     private Button[] btns;
     private int currentPage = 0;
@@ -39,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().show();
         obj = new BusArrayAdapter(this, Bus.sampleBusList(20));
-        list = findViewById(R.id.listView);
+        list = findViewById(R.id.bus_listView);
         list.setAdapter(obj);
 
         // hubungkan komponen dengan ID nya
         prevButton = findViewById(R.id.prev_page);
         nextButton = findViewById(R.id.next_page);
         pageScroll = findViewById(R.id.page_number_scroll);
-        busListView = findViewById(R.id.listView);
+        busListView = findViewById(R.id.bus_listView);
         // membuat sample list
         listBus = Bus.sampleBusList(20);
         listSize = listBus.size();

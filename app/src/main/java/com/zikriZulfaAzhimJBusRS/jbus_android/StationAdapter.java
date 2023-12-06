@@ -13,7 +13,16 @@ import com.zikriZulfaAzhimJBusRS.jbus_android.model.Station;
 
 import java.util.List;
 
+/**
+ * The type Station adapter.
+ */
 public class StationAdapter extends ArrayAdapter<Station> {
+    /**
+     * Instantiates a new Station adapter.
+     *
+     * @param context  the context
+     * @param stations the stations
+     */
     public StationAdapter(Context context, List<Station> stations) {
         super(context, android.R.layout.simple_list_item_1, stations);
     }

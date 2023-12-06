@@ -21,13 +21,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type About me activity.
+ */
 public class AboutMeActivity extends AppCompatActivity {
+    /**
+     * The constant LoggedAccount.
+     */
     public static Account LoggedAccount;
     private BaseApiService mApiService;
     private Context mContext;
     private Button topUpButton, manageBusButton = null;
     private EditText topUp;
-    private TextView usernameTextView, emailTextView, initialTextView, balanceTextView, statusTextView;
+    private TextView usernameTextView, emailTextView, initialTextView, balanceTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,7 +116,10 @@ public class AboutMeActivity extends AppCompatActivity {
     }
 
 
-protected void handleTopUp() {
+    /**
+     * Handle top up.
+     */
+    protected void handleTopUp() {
     String amountString = topUp.getText().toString();
     if (!amountString.isEmpty()) {
         double amount = Double.parseDouble(amountString);
