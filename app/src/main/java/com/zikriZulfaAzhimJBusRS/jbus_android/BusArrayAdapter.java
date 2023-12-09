@@ -1,10 +1,12 @@
 package com.zikriZulfaAzhimJBusRS.jbus_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,7 @@ import java.util.List;
  * The type Bus array adapter.
  */
 public class BusArrayAdapter extends ArrayAdapter<Bus> {
-
+    private Context mContext;
     /**
      * Instantiates a new Bus array adapter.
      *
@@ -27,6 +29,7 @@ public class BusArrayAdapter extends ArrayAdapter<Bus> {
      */
     public BusArrayAdapter(@NonNull Context context, List<Bus> busList) {
         super(context, 0, busList);
+        mContext = context;
     }
 
     @NonNull
@@ -36,12 +39,18 @@ public class BusArrayAdapter extends ArrayAdapter<Bus> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.bus_view, parent, false);
         }
+        Bus currentBus = getItem(position);
 
         TextView busNameTextView = listItemView.findViewById(R.id.busName);
         TextView departureStationTextView = listItemView.findViewById(R.id.departure);
         TextView arrivalStationTextView = listItemView.findViewById(R.id.arrival);
 
-        Bus currentBus = getItem(position);
+        Button bookingButton = listItemView.findViewById(R.id.booking_button);
+
+        bookingButton.setOnClickListener(v -> {
+            moveActivity(mContext, BookingActivity.class);
+        });
+
 
         if (currentBus != null) {
             busNameTextView.setText(currentBus.name);
@@ -50,5 +59,15 @@ public class BusArrayAdapter extends ArrayAdapter<Bus> {
         }
 
         return listItemView;
+    }
+
+    private void moveActivity(Context ctx, Class<?> cls){
+        Intent intent = new Intent(ctx, cls);
+        mContext.startActivity(intent);
+    }
+
+    @Override
+    public Bus getItem(int position) {
+        return super.getItem(position);
     }
 }

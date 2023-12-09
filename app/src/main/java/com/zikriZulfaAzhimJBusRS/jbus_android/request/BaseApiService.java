@@ -5,12 +5,14 @@ import com.zikriZulfaAzhimJBusRS.jbus_android.model.BaseResponse;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Bus;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.BusType;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Facility;
+import com.zikriZulfaAzhimJBusRS.jbus_android.model.Payment;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Renter;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Station;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -116,6 +118,9 @@ public interface BaseApiService {
     @POST("bus/addSchedule")
     Call<BaseResponse<Bus>> addSchedule(@Query("busId") int busId,
                                         @Query("time") String time);
+    @DELETE("bus/delete")
+    Call<BaseResponse <Bus>> deleteBus(
+            @Query("busId") int busId);
 
     /**
      * Gets busby id.
@@ -149,4 +154,14 @@ public interface BaseApiService {
             @Query("price") int price,
             @Query("stationDepartureId") int stationDepartureId,
             @Query("stationArrivalId") int stationArrivalId);
+
+    @POST("payment/makeBooking")
+    Call<BaseResponse <Payment>> makeBooking(
+            @Query("buyerId") int buyerId,
+            @Query("renterId") int renterId,
+            @Query("busId") int busId,
+            @Query("busSeats") List<String> busSeats,
+            @Query("departureDate") String departureDate
+    );
+
 }

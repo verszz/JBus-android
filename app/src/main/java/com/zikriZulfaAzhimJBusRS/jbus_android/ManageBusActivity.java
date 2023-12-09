@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Bus;
+import com.zikriZulfaAzhimJBusRS.jbus_android.model.Schedule;
 import com.zikriZulfaAzhimJBusRS.jbus_android.request.BaseApiService;
 import com.zikriZulfaAzhimJBusRS.jbus_android.request.UtilsApi;
 
@@ -52,6 +53,9 @@ public class ManageBusActivity extends AppCompatActivity {
         myBusListView = this.findViewById(R.id.manageBus_listView);
 
         loadMyBus();
+
+
+
     }
 
     /**
@@ -105,7 +109,7 @@ public class ManageBusActivity extends AppCompatActivity {
             busName.setText(currentBus.name);
 
             // then according to the position of the view assign the desired TextView 2 for the same
-            Button addSched = currentItemView.findViewById(R.id.button3);
+            Button addSched = currentItemView.findViewById(R.id.manage_button);
             addSched.setOnClickListener(v->{
                 Intent i = new Intent(mContext, ManageBusSchedule.class);
                 i.putExtra("busId", currentBus.id);

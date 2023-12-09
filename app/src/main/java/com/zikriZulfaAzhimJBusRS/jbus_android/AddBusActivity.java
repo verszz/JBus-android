@@ -50,6 +50,7 @@ public class AddBusActivity extends AppCompatActivity {
         private BaseApiService mApiService;
         private Context mContext;
         private Button addButton = null;
+        public static Bus addedBus;
 
 
         @Override
@@ -243,6 +244,7 @@ public class AddBusActivity extends AppCompatActivity {
                     BaseResponse<Bus> res = response.body();
 // if success finish this activity (back to login activity)
                     if (res.success) {
+
                         Toast.makeText(AddBusActivity.this, "Bus berhasil ditambahkan", Toast.LENGTH_SHORT).show();
                         moveActivity(mContext, ManageBusActivity.class);
                     } else {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class ManageBusSchedule extends AppCompatActivity {
         addSchedule = this.findViewById(R.id.add_a_schedule);
 
         busID = this.getIntent().getIntExtra("busId", -1);
+
 
         showSchedule();
         dateText.setOnClickListener(v->showDialog());
@@ -134,6 +136,7 @@ public class ManageBusSchedule extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.show();
     }
+
 
     /**
      * Show schedule.

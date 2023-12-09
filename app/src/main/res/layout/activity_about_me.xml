@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,118 +18,24 @@
         android:backgroundTint="@color/black"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="48dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Username"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Email"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textColorHint="#000000"
-                android:textSize="24dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Balance"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/balance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="-"
-                android:textColor="@color/black"
-                android:textSize="24dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/topUp"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:inputType="number" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:backgroundTint="#A58832"
-                android:text="TOP UP"
-                app:cornerRadius="90dp" />
-        </LinearLayout>
-
-    </LinearLayout>
+        android:textSize="48dp"
+        app:layout_constraintBottom_toTopOf="@id/company"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/company"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="9dp">
+        android:layout_marginTop="330dp"
+        app:cardCornerRadius="9dp"
+        app:layout_constraintBottom_toTopOf="@id/balance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/initial">
 
         <TextView
             android:id="@+id/statusTextView"
@@ -154,14 +60,6 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-
-        <TextView
-            android:id="@+id/registerCompany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="18sp" />
-
         <Button
             android:id="@+id/manageBusButton"
             android:layout_width="wrap_content"
@@ -172,7 +70,107 @@
             android:gravity="center|center_horizontal"
             android:text="Manage Bus" />
 
-
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/company"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initial">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/username_label"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:text="Username\t"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/email_label"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/balance_label"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:text="Balance"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/black"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/topUp"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/topUpButton"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#A58832"
+                android:text="TOP UP"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

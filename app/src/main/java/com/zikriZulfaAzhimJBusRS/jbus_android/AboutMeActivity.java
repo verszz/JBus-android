@@ -48,7 +48,7 @@ public class AboutMeActivity extends AppCompatActivity {
 
         topUp = findViewById(R.id.topUp);
 
-        topUpButton = findViewById(R.id.button);
+        topUpButton = findViewById(R.id.topUpButton);
         manageBusButton = findViewById(R.id.manageBusButton);
 
 
