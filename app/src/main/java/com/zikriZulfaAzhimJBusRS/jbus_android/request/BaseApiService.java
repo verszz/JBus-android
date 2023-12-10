@@ -125,11 +125,11 @@ public interface BaseApiService {
     /**
      * Gets busby id.
      *
-     * @param busId the bus id
+     * @param id the bus id
      * @return the busby id
      */
     @GET("bus/{id}")
-    Call<Bus> getBusbyId(@Path("id") int busId);
+    Call<Bus> getBusbyId(@Path("id") int id);
 
     /**
      * Create call.
@@ -164,4 +164,12 @@ public interface BaseApiService {
             @Query("departureDate") String departureDate
     );
 
+    @GET("payment/buyer/{buyerId}")
+    Call<List<Payment>> getMyPayment(@Path("buyerId") int buyerId);
+
+    @POST("payment/{id}/accept")
+    Call<BaseResponse<Payment>> acceptPayment(@Path("id") int id);
+
+    @POST("payment/{id}/cancel")
+    Call<BaseResponse<Payment>> cancelPayment(@Path("id") int id);
 }

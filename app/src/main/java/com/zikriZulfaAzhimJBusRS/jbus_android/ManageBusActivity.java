@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Bus;
 import com.zikriZulfaAzhimJBusRS.jbus_android.model.Schedule;
@@ -110,6 +111,16 @@ public class ManageBusActivity extends AppCompatActivity {
 
             // then according to the position of the view assign the desired TextView 2 for the same
             Button addSched = currentItemView.findViewById(R.id.manage_button);
+            Button deleteBus = currentItemView.findViewById(R.id.delete_button);
+            deleteBus.setOnClickListener(v ->{
+
+                int busId = currentBus.getId();
+                Intent intent = new Intent(mContext, DeleteBusActivity.class);
+                intent.putExtra("busId", busId); // Pass busId to DeleteBusActivity
+                mContext.startActivity(intent);
+                Toast.makeText(mContext, "Directing..", Toast.LENGTH_SHORT).show();
+
+            });
             addSched.setOnClickListener(v->{
                 Intent i = new Intent(mContext, ManageBusSchedule.class);
                 i.putExtra("busId", currentBus.id);

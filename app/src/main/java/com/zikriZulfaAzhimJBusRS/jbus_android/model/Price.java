@@ -12,5 +12,10 @@ public class Price {
      * The Price.
      */
     public double price;
+    private double amount;
 
+    @Override
+    public String toString() {
+        return String.valueOf(amount);
+    }
 }

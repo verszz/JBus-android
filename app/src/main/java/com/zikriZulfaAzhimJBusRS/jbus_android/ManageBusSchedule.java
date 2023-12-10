@@ -54,6 +54,8 @@ public class ManageBusSchedule extends AppCompatActivity {
         mContext = this;
         mApiService = UtilsApi.getApiService();
 
+        getSupportActionBar().setTitle("Add Schedule");
+
         scheduleList = this.findViewById(R.id.schedule_list);
         dateText = this.findViewById(R.id.selectedDateText);
         addSchedule = this.findViewById(R.id.add_a_schedule);

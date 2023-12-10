@@ -2,6 +2,7 @@ package com.zikriZulfaAzhimJBusRS.jbus_android;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,11 @@ import java.util.List;
  */
 public class BusArrayAdapter extends ArrayAdapter<Bus> {
     private Context mContext;
+    /**
+     * The constant busid.
+     */
+    public static int busid;
+
     /**
      * Instantiates a new Bus array adapter.
      *
@@ -44,19 +50,20 @@ public class BusArrayAdapter extends ArrayAdapter<Bus> {
         TextView busNameTextView = listItemView.findViewById(R.id.busName);
         TextView departureStationTextView = listItemView.findViewById(R.id.departure);
         TextView arrivalStationTextView = listItemView.findViewById(R.id.arrival);
+        busNameTextView.setText(currentBus.name);
+        departureStationTextView.setText("Departure: " + currentBus.departure);
+        arrivalStationTextView.setText("Arrival: " + currentBus.arrival);
 
-        Button bookingButton = listItemView.findViewById(R.id.booking_button);
+        Button bookButton = listItemView.findViewById(R.id.booking_button);
 
-        bookingButton.setOnClickListener(v -> {
-            moveActivity(mContext, BookingActivity.class);
+        bookButton.setOnClickListener(v -> {
+            Log.d("ButtonClickListener", "Button clicked");
+            Intent i = new Intent(mContext, BookingActivity.class);
+            busid = currentBus.id;
+            i.putExtra("busId", currentBus.id);
+            mContext.startActivity(i);
         });
 
-
-        if (currentBus != null) {
-            busNameTextView.setText(currentBus.name);
-            departureStationTextView.setText("Departure: " + currentBus.departure);
-            arrivalStationTextView.setText("Arrival: " + currentBus.arrival);
-        }
 
         return listItemView;
     }

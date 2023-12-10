@@ -21,7 +21,6 @@ public class RetrofitClient {
                 .addNetworkInterceptor(chain -> {
                     Request originalRequest = chain.request();
                     Request newRequest = originalRequest.newBuilder()
-//ganti value header di bawah ini dengan nama kalian
                             .addHeader("Client-Name", "Zikri")
                             .build();
                     return chain.proceed(newRequest);

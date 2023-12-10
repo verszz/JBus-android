@@ -24,6 +24,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Delete bus activity.
+ */
 public class DeleteBusActivity extends AppCompatActivity {
 
     private BaseApiService mApiService;
@@ -50,26 +53,11 @@ public class DeleteBusActivity extends AppCompatActivity {
 
     }
 
-//    private void showDeleteDialog() {
-//        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext);
-//        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View dialogView = inflater.inflate(R.layout.activity_delete_bus, null);
-//        dialogBuilder.setView(dialogView);
-//
-//        Button yesButton = dialogView.findViewById(R.id.yes_button);
-//        Button noButton = dialogView.findViewById(R.id.no_button);
-//
-//        AlertDialog alertDialog = dialogBuilder.create();
-//        alertDialog.show();
-//
-//        yesButton.setOnClickListener(v -> {
-//            handleDelete();
-//            alertDialog.dismiss(); // Tutup dialog setelah melakukan aksi hapus
-//        });
-//
-//        noButton.setOnClickListener(v -> alertDialog.dismiss());
-//    }
 
+
+    /**
+     * Handle delete.
+     */
     protected void handleDelete() {
         mApiService.deleteBus(busId).enqueue(new Callback<BaseResponse<Bus>>() {
             @Override

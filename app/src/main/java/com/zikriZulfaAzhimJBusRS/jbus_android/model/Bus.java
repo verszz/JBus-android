@@ -70,7 +70,22 @@ public class Bus extends Serializable {
         return name;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
+    }
+
+    /**
+     * To string price string.
+     *
+     * @param price the price
+     * @return the string
+     */
+    public String toStringPrice(Price price) {
+        return String.valueOf(price);
     }
 }

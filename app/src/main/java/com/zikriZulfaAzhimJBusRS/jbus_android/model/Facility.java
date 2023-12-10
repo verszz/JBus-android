@@ -35,5 +35,7 @@ public enum Facility {
     /**
      * Cool box facility.
      */
-    COOL_BOX
+    COOL_BOX;
+
+    
 }

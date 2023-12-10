@@ -35,23 +35,42 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * The Obj.
+     */
     BusArrayAdapter obj = null;
+    /**
+     * The List.
+     */
     ListView list;
     private Button[] btns;
     private int currentPage = 0;
     private int pageSize = 7;
     private int listSize;
     private int noOfPages;
-    private List<Bus> listBus = new ArrayList<>();
+    /**
+     * The constant listBus.
+     */
+    public static List<Bus> listBus = new ArrayList<>();
     private Button prevButton = null;
     private Button nextButton = null;
     private ListView busListView = null;
     private HorizontalScrollView pageScroll = null;
     private BaseApiService mApiService;
     private Context mContext;
+    /**
+     * The constant selectedBookId.
+     */
     public static int selectedBookId;
+    /**
+     * The constant busIndex.
+     */
+    public static int busIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().show();
         mContext = this;
         mApiService = UtilsApi.getApiService();
-        list = findViewById(R.id.bus_listView);
+        list = this.findViewById(R.id.bus_listView);
         obj = new BusArrayAdapter(this, new ArrayList<>());
         list.setAdapter(obj);
         loadMyBus();
@@ -71,24 +90,9 @@ public class MainActivity extends AppCompatActivity {
         pageScroll = findViewById(R.id.page_number_scroll);
         //busListView = findViewById(R.id.bus_listView);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                position -= 1;
-                if (position >= 0 && position < listBus.size()) {
-                    Toast.makeText(getApplicationContext(), "Selected item at position: " + position, Toast.LENGTH_LONG).show();
-                    selectedBookId = listBus.get(position).id;
-                    Intent intent = new Intent(mContext, BookingActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Got wrong  ", Toast.LENGTH_LONG).show();                }
-            }
-        });
+
 
         listSize = 0; // Initialize listSize
-
-        paginationFooter();
-        goToPage(currentPage);
 
         prevButton.setOnClickListener(v -> {
             currentPage = currentPage != 0 ? currentPage - 1 : 0;
@@ -101,14 +105,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Load my bus.
+     */
     protected void loadMyBus() {
         mApiService.getMyBus(LoginActivity.LoggedAccount.id).enqueue(new Callback<List<Bus>>() {
             @Override
             public void onResponse(Call<List<Bus>> call, Response<List<Bus>> response) {
                 if (response.isSuccessful()) {
                     List<Bus> myBusList = response.body();
+                    listBus = myBusList;
                     MyArrayAdapter adapter = new MyArrayAdapter(mContext, myBusList);
                     list.setAdapter(adapter);
+
 
                     listSize = myBusList.size(); // Update listSize with received bus list size
                     paginationFooter();
@@ -125,8 +134,15 @@ public class MainActivity extends AppCompatActivity {
 
     private class MyArrayAdapter extends ArrayAdapter<Bus> {
 
+        /**
+         * Instantiates a new My array adapter.
+         *
+         * @param context the context
+         * @param objects the objects
+         */
         public MyArrayAdapter(@NonNull Context context, @NonNull List<Bus> objects) {
             super(context, 0, objects);
+            mContext = context;
         }
 
         @NonNull
@@ -143,9 +159,21 @@ public class MainActivity extends AppCompatActivity {
             TextView busName = currentItemView.findViewById(R.id.busName);
             TextView departure = currentItemView.findViewById(R.id.departure);
             TextView arrival = currentItemView.findViewById(R.id.arrival);
+            TextView price = currentItemView.findViewById(R.id.bus_price);
             busName.setText(currentBus.name);
             departure.setText(currentBus.departure.stationName);
             arrival.setText(currentBus.arrival.stationName);
+            price.setText(String.valueOf((int) currentBus.price.price));
+
+
+            Button bookingButton = currentItemView.findViewById(R.id.booking_button);
+
+            bookingButton.setOnClickListener(v -> {
+                Intent i = new Intent(mContext, BookingActivity.class);
+                busIndex = currentBus.id;
+                i.putExtra("busId", currentBus.id);
+                mContext.startActivity(i);
+            });
 
             return currentItemView;
         }
@@ -201,7 +229,11 @@ public class MainActivity extends AppCompatActivity {
     private void viewPaginatedList(List<Bus> listBus, int page) {
         int startIndex = page * pageSize;
         int endIndex = Math.min(startIndex + pageSize, listBus.size());
-        List<Bus> paginatedList = listBus.subList(startIndex, endIndex);
+        List<Bus> paginatedList = new ArrayList<>();
+
+        if (startIndex < endIndex) {
+            paginatedList = new ArrayList<>(listBus.subList(startIndex, endIndex));
+        }
 
         obj.clear();
         obj.addAll(paginatedList);
@@ -227,9 +259,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(aboutMeIntent);
             return true;
         }
+        if(id == R.id.payment_button){
+            Intent paymentIntent = new Intent(MainActivity.this, PaymentActivity.class);
+            startActivity(paymentIntent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 }

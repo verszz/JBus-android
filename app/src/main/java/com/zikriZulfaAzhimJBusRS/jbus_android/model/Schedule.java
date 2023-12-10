@@ -18,16 +18,16 @@ public class Schedule {
      * The Seat availability.
      */
     public Map<String, Boolean> seatAvailability;
-        @NonNull
-        @Override
-        public String toString() {
-            int countOccupied = 0;
-            for (boolean val : seatAvailability.values()) {
-                if (!val) countOccupied++;
-            }
-            int totalSeat = seatAvailability.size();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy HH:mm:ss");
-            return dateFormat.format(this.departureSchedule.getTime()) + "\t\t" +"[ "+countOccupied + "/" + totalSeat+" ]";
-        }
-    }
 
+    @NonNull
+    @Override
+    public String toString() {
+        int countOccupied = 0;
+        for (boolean val : seatAvailability.values()) {
+            if (!val) countOccupied++;
+        }
+        int totalSeat = seatAvailability.size();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy HH:mm:ss");
+        return dateFormat.format(this.departureSchedule.getTime()) + "\t\t" +"[ "+countOccupied + "/" + totalSeat+" ] ";
+    }
+}

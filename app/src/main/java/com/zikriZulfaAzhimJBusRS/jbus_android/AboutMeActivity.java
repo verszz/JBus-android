@@ -40,6 +40,9 @@ public class AboutMeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about_me);
         mContext = this;
         mApiService = UtilsApi.getApiService();
+        getSupportActionBar().setTitle("About Me");
+
+        LoggedAccount = LoginActivity.LoggedAccount;
 
         usernameTextView = findViewById(R.id.username);
         emailTextView = findViewById(R.id.email);
@@ -56,7 +59,7 @@ public class AboutMeActivity extends AppCompatActivity {
         if (LoginActivity.LoggedAccount != null) {
             usernameTextView.setText(LoginActivity.LoggedAccount.name);
             emailTextView.setText(LoginActivity.LoggedAccount.email);
-            balanceTextView.setText(Double.toString(LoginActivity.LoggedAccount.balance));
+
             initialTextView.setText(getInitials(LoginActivity.LoggedAccount.name));
 
             if (LoginActivity.LoggedAccount.company != null) {
@@ -91,6 +94,29 @@ public class AboutMeActivity extends AppCompatActivity {
             handleTopUp();
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Fetch updated account details from the server
+        mApiService.getAccountbyId(LoggedAccount.id).enqueue(new Callback<Account>() {
+            @Override
+            public void onResponse(Call<Account> call, Response<Account> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Account loggedAccount = response.body();
+                    TextView balanceTextView =  findViewById(R.id.balance);
+                    balanceTextView.setText("IDR " + String.valueOf(loggedAccount.balance));
+                } else {
+                    Toast.makeText(AboutMeActivity.this, "Failed to get account details", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Account> call, Throwable t) {
+                Toast.makeText(mContext, "Problem with the server", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void moveActivity(Context ctx, Class<?> cls){

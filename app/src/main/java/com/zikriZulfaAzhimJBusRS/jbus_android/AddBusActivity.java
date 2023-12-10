@@ -50,13 +50,17 @@ public class AddBusActivity extends AppCompatActivity {
         private BaseApiService mApiService;
         private Context mContext;
         private Button addButton = null;
-        public static Bus addedBus;
+    /**
+     * The constant addedBus.
+     */
+    public static Bus addedBus;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_add_bus);
+            getSupportActionBar().setTitle("Add Bus");
 
             initStation();
             initBusType();
@@ -64,7 +68,7 @@ public class AddBusActivity extends AppCompatActivity {
             // Initialize UI components
             initUI();
 
-            addButton = findViewById(R.id.button2);
+            addButton = findViewById(R.id.add_bus_button);
             addButton.setOnClickListener(v -> handleAdd());
 
             // Initialize Checkboxes
@@ -187,7 +191,7 @@ public class AddBusActivity extends AppCompatActivity {
                 }
             };
             // Initialize Spinner for BusType
-            busTypeSpinner = findViewById(R.id.bus_type_dropdown);
+            busTypeSpinner = findViewById(R.id.seat_dropdown);
             ArrayAdapter<BusType> busTypeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, busType);
             busTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             busTypeSpinner.setAdapter(busTypeAdapter);
@@ -201,7 +205,7 @@ public class AddBusActivity extends AppCompatActivity {
             price  = findViewById(R.id.price);
 
             // Initialize Spinners for Departure and Arrival
-            busTypeSpinner = findViewById(R.id.bus_type_dropdown);
+            busTypeSpinner = findViewById(R.id.seat_dropdown);
             departureSpinner = findViewById(R.id.departure_dropdown);
             arrivalSpinner = findViewById(R.id.arrival_dropdown);
         }

@@ -18,6 +18,5 @@
     android:id="@+id/payment_button"
     android:title="Payment"
     android:icon="@drawable/baseline_payments_24"
-    app:actionViewClass="androidx.appcompat.widget.SearchView"
     app:showAsAction="always|collapseActionView"/>
 </menu>
